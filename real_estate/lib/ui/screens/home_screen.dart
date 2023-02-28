@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List pages = [
     const SearchScreen(),
     const LikeScreen(),
+    const LikeScreen(),
     const MyAdvertisement(),
     const AccountScreen()
   ];
@@ -38,21 +39,64 @@ class _HomeScreenState extends State<HomeScreen> {
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.white,
         backgroundColor: AppColors.green,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+        items: [
+          const BottomNavigationBarItem(
+            icon: Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Icon(
+                Icons.search,
+                size: 40,
+              ),
+            ),
             label: 'хайх',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+          const BottomNavigationBarItem(
+            icon: Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Icon(
+                Icons.heart_broken,
+                size: 40,
+              ),
+            ),
             label: 'Таалагдсан',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+              icon: Padding(
+                padding: const EdgeInsets.only(top: 0),
+                child: InkWell(
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(17),
+                        color: Colors.white),
+                    child: const Icon(
+                      Icons.add,
+                      color: AppColors.green,
+                      size: 40,
+                    ),
+                  ),
+                ),
+              ),
+              label: 'Зар нэмэх'),
+          const BottomNavigationBarItem(
+            icon: Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Icon(
+                Icons.list,
+                size: 40,
+              ),
+            ),
             label: 'Миний зар',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+          const BottomNavigationBarItem(
+            icon: Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Icon(
+                Icons.account_box_outlined,
+                size: 40,
+              ),
+            ),
             label: 'хэрэглэгч',
           ),
         ],
