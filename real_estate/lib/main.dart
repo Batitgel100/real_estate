@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate/constants/realtest.dart';
-import 'package:real_estate/constants/test.dart';
-import 'package:real_estate/ui/screens/login_screen.dart';
+import 'package:real_estate/ui/screens/main%20screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,6 +25,6 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: const LoginScreen());
+        home: const HomeScreen());
   }
 }

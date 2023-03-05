@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate/constants/color.dart';
+import 'package:real_estate/ui/screens/appartment.dart';
 import 'package:real_estate/ui/screens/maps.dart';
 import 'package:real_estate/ui/screens/widgets/advertise.dart';
 import 'package:real_estate/ui/screens/widgets/indicator.dart';
 
-import 'agents.dart';
+import '../agents.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -211,12 +212,18 @@ class _TabuudState extends State<Tabuud> with TickerProviderStateMixin {
               return Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
-                child: Container(
-                  height: 250,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.black,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const Appartment()));
+                  },
+                  child: Container(
+                    height: 250,
+                    width: 400,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               );

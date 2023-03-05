@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate/ui/screens/search_screen.dart';
+import 'package:real_estate/ui/screens/main%20screens/search_screen.dart';
 import 'package:real_estate/ui/screens/widgets/advertise.dart';
 import 'package:real_estate/ui/screens/widgets/indicator.dart';
 

@@ -11,9 +11,8 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.teal,
-      ),
-    );
+        body: Column(
+      children: const [],
+    ));
   }
 }

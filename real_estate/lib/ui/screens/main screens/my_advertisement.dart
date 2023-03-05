@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate/ui/screens/home_screen.dart';
+import 'package:real_estate/ui/screens/main%20screens/home_screen.dart';
 
-import '../../constants/color.dart';
+import '../../../constants/color.dart';
 
 class MyAdvertisement extends StatefulWidget {
   const MyAdvertisement({super.key});

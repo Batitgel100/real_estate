@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate/ui/screens/home_screen.dart';
+import 'package:real_estate/ui/screens/main%20screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
