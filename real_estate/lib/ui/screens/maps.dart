@@ -30,6 +30,10 @@ class Mapss extends StatelessWidget {
                 height: 110,
                 width: 400,
                 decoration: BoxDecoration(
+                    image: const DecorationImage(
+                        image: AssetImage(
+                            '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/reklam.jpg'),
+                        fit: BoxFit.cover),
                     color: Colors.black,
                     borderRadius: BorderRadius.circular(12)),
               ),

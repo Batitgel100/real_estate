@@ -5,7 +5,7 @@ import 'package:real_estate/ui/screens/maps.dart';
 import 'package:real_estate/ui/screens/widgets/advertise.dart';
 import 'package:real_estate/ui/screens/widgets/indicator.dart';
 
-import '../agents.dart';
+import '../agent_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -28,7 +28,7 @@ class _SearchScreenState extends State<SearchScreen>
   List tabs = [
     const Tabuud(),
     const Mapss(),
-    const Agents(),
+    const AgentScreen(),
   ];
   @override
   Widget build(BuildContext contex) {
@@ -116,7 +116,7 @@ class _TabuudState extends State<Tabuud> with TickerProviderStateMixin {
     return Column(
       children: [
         const SizedBox(
-          height: 5,
+          height: 3,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -151,7 +151,7 @@ class _TabuudState extends State<Tabuud> with TickerProviderStateMixin {
           ],
         ),
         const SizedBox(
-          height: 7,
+          height: 5,
         ),
         Container(
           height: 1,
@@ -173,7 +173,7 @@ class _TabuudState extends State<Tabuud> with TickerProviderStateMixin {
           ),
         ),
         const SizedBox(
-          height: 10,
+          height: 5,
         ),
         SizedBox(
           height: 110,
@@ -204,8 +204,7 @@ class _TabuudState extends State<Tabuud> with TickerProviderStateMixin {
             ),
           ],
         ),
-        SizedBox(
-          height: 453,
+        Expanded(
           child: ListView.builder(
             itemCount: 10,
             itemBuilder: (BuildContext context, int index) {
@@ -221,6 +220,11 @@ class _TabuudState extends State<Tabuud> with TickerProviderStateMixin {
                     height: 250,
                     width: 400,
                     decoration: BoxDecoration(
+                      image: const DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(
+                            '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/ff.png'),
+                      ),
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.black,
                     ),

@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const MyAdvertisement(),
     const AccountScreen()
   ];
-  void changePage(index) {
+  void changePage(int index) {
     setState(() {
       index_color = index;
     });
@@ -84,8 +84,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         MaterialPageRoute(builder: (_) => const AddAd()));
                   },
                   child: Container(
-                    height: 50,
-                    width: 50,
+                    height: 45,
+                    width: 45,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(17),
                         color: Colors.white),

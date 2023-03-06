@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:real_estate/ui/screens/agent.dart';
 import 'package:real_estate/ui/screens/main%20screens/search_screen.dart';
 import 'package:real_estate/ui/screens/widgets/advertise.dart';
 import 'package:real_estate/ui/screens/widgets/indicator.dart';
 
-class Agents extends StatefulWidget {
-  const Agents({
+class AgentScreen extends StatefulWidget {
+  const AgentScreen({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<Agents> createState() => _AgentsState();
+  State<AgentScreen> createState() => _AgentScreenState();
 }
 
-class _AgentsState extends State<Agents> with TickerProviderStateMixin {
+class _AgentScreenState extends State<AgentScreen>
+    with TickerProviderStateMixin {
   var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -119,12 +121,27 @@ class _AgentsState extends State<Agents> with TickerProviderStateMixin {
               return Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
-                child: Container(
-                  height: 120,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.black,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const Agent(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: 120,
+                    width: 400,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.black,
+                      image: const DecorationImage(
+                          image: AssetImage(
+                            '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/ageent.jpg',
+                          ),
+                          fit: BoxFit.cover),
+                    ),
                   ),
                 ),
               );
