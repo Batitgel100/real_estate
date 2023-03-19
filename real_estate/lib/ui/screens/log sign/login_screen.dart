@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:real_estate/constants/color.dart';
 import 'package:real_estate/ui/screens/main%20screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -69,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: const Center(
                           child: Text(
                             'login',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyles.white15,
                           ),
                         ),
                       ),

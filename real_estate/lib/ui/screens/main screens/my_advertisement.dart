@@ -19,7 +19,7 @@ class _MyAdvertisementState extends State<MyAdvertisement> {
           leading: InkWell(
             onTap: () {
               setState(() {
-                index_color = 0;
+                indexcolor = 0;
               });
             },
             child: const Icon(

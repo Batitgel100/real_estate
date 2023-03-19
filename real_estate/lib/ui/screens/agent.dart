@@ -17,7 +17,7 @@ class _AgentState extends State<Agent> {
         backgroundColor: AppColors.green,
         title: const Text(
           'Агент бүртгэх',
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyles.white22,
         ),
       ),
       backgroundColor: AppColors.grey,
@@ -35,7 +35,7 @@ class _AgentState extends State<Agent> {
                 fillColor: Colors.white,
                 hoverColor: Colors.white,
                 labelText: 'Овог',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyles.white15,
                 focusColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -61,7 +61,7 @@ class _AgentState extends State<Agent> {
                 fillColor: Colors.white,
                 hoverColor: Colors.white,
                 labelText: 'Нэр',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyles.white15,
                 focusColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -87,7 +87,7 @@ class _AgentState extends State<Agent> {
                 fillColor: Colors.white,
                 hoverColor: Colors.white,
                 labelText: 'Регистэр',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyles.white15,
                 focusColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -113,7 +113,7 @@ class _AgentState extends State<Agent> {
                 fillColor: Colors.white,
                 hoverColor: Colors.white,
                 labelText: 'Утас',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyles.white15,
                 focusColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -132,10 +132,7 @@ class _AgentState extends State<Agent> {
           ),
           const Padding(
             padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Зураг',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
+            child: Text('Зураг', style: TextStyles.white22),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
@@ -161,7 +158,7 @@ class _AgentState extends State<Agent> {
                 fillColor: Colors.white,
                 hoverColor: Colors.white,
                 labelText: 'Ажилласан жил',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyles.white15,
                 focusColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -189,7 +186,7 @@ class _AgentState extends State<Agent> {
                   fillColor: Colors.white,
                   hoverColor: Colors.white,
                   labelText: 'Товч мэдээлэл',
-                  labelStyle: TextStyle(color: Colors.white),
+                  labelStyle: TextStyles.white15,
                   focusColor: Colors.white,
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -211,7 +208,7 @@ class _AgentState extends State<Agent> {
             padding: EdgeInsets.all(8.0),
             child: Text(
               'Байгууллагын лого',
-              style: TextStyle(color: Colors.white, fontSize: 20),
+              style: TextStyles.white22,
             ),
           ),
           Padding(
@@ -238,7 +235,7 @@ class _AgentState extends State<Agent> {
                 fillColor: Colors.white,
                 hoverColor: Colors.white,
                 labelText: 'Цахим шуудан',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyles.white22,
                 focusColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -264,7 +261,7 @@ class _AgentState extends State<Agent> {
                 fillColor: Colors.white,
                 hoverColor: Colors.white,
                 labelText: 'Фэйсбүүк хаяг',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyles.white15,
                 focusColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -290,7 +287,7 @@ class _AgentState extends State<Agent> {
                 fillColor: Colors.white,
                 hoverColor: Colors.white,
                 labelText: 'Инстаграм хаяг',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyles.white15,
                 focusColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -316,7 +313,7 @@ class _AgentState extends State<Agent> {
                 fillColor: Colors.white,
                 hoverColor: Colors.white,
                 labelText: 'Viber',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyles.white15,
                 focusColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -342,7 +339,7 @@ class _AgentState extends State<Agent> {
                 fillColor: Colors.white,
                 hoverColor: Colors.white,
                 labelText: 'WhatsApp',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyles.white15,
                 focusColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -368,7 +365,7 @@ class _AgentState extends State<Agent> {
                 fillColor: Colors.white,
                 hoverColor: Colors.white,
                 labelText: 'LinkedIn',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyles.white15,
                 focusColor: Colors.white,
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -408,10 +405,7 @@ class _AgentState extends State<Agent> {
               ),
               Text(
                 'Зар оруулах',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w500),
+                style: TextStyles.white22,
               ),
             ],
           ),

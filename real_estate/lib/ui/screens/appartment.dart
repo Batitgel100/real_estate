@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate/constants/color.dart';
+import 'package:real_estate/ui/screens/agent_screen.dart';
 
 class Appartment extends StatefulWidget {
   const Appartment({super.key});
@@ -58,10 +59,7 @@ class _AppartmentState extends State<Appartment> {
                                   padding: EdgeInsets.only(left: 20),
                                   child: Text(
                                     '350,000,000',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600),
+                                    style: TextStyles.white22,
                                   ),
                                 ),
                               ],
@@ -80,10 +78,7 @@ class _AppartmentState extends State<Appartment> {
                                 ),
                                 Text(
                                   '350,000',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500),
+                                  style: TextStyles.white15,
                                 ),
                               ],
                             ),
@@ -108,118 +103,166 @@ class _AppartmentState extends State<Appartment> {
             ),
           ];
         },
-        body: SizedBox(
-          height: 700,
-          width: 500,
-          // color: Colors.yellow,
-          child: ListView(
-            children: [
-              const First(),
-              const line(),
-              SizedBox(
-                // color: Colors.yellow,
-                height: MediaQuery.of(context).size.height * 0.3,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const Text(
-                        'Luxury appartment',
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      const Text(
-                        'Ашиглалтад орсон эсэх: Тийм',
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      const Text(
-                        'Ашиглалтад орсон: 2020',
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      const Text(
-                        'Лизинг: Үгүй',
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      const Text(
-                        'Байршил: СБД 1-р хороо Ч апартмент',
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Container(
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 69, 69, 69),
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 2,
+        body: Expanded(
+          child: SizedBox(
+            // width: MediaQuery.of(context).size.width * 0.95,
+            // color: Colors.yellow,
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                const First(),
+                const line(),
+                const Luxury(),
+                const line(),
+                const Location(),
+                const SizedBox(
+                  height: 20,
+                ),
+                const line(),
+                Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.95,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: 5,
+                            bottom: 10,
                           ),
-                        ),
-                        child: const Padding(
-                          padding:
-                              EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                           child: Text(
-                            'Хотын төвд, УИД-н баруун талд Peace mall худалдааны төвийн баруун жигүүр буюу Пийс тауэрт 95 мкв оффис худалдана. Эрэлттэй байршил тохилог оффис, хямд үнэ. Бартерт төвийн байршилд орон сууц оролцуулах боломжтой',
-                            style: TextStyle(
-                                fontSize: 13,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400),
+                            'Төстэй зарууд',
+                            style: TextStyles.white22,
                           ),
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 8.0),
+                          child: Agent(),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 8.0),
+                          child: Agent(),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 8.0),
+                          child: Agent(),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+
+      backgroundColor: AppColors.grey,
+      // bottomNavigationBar:
+      // MyBottomNavBar(currentIndex: 0, onTap: widget.toSomething),
+    );
+  }
+}
+
+class Location extends StatelessWidget {
+  const Location({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.95,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(
+                top: 5,
+              ),
+              child: Text(
+                'Location',
+                style: TextStyles.white22,
+              ),
+            ),
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(12),
+                // image: const DecorationImage(
+                //   image: AssetImage(
+                //     '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/ddd.jpg',
+                //   ),
+                //   fit: BoxFit.contain,
+                // ),
+              ),
+              child: Image.asset(
+                '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/imageddd.png',
+                fit: BoxFit.contain,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Agent(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Luxury extends StatelessWidget {
+  const Luxury({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      // color: Colors.yellow,
+      height: MediaQuery.of(context).size.height * 0.3,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Text('Luxury appartment', style: TextStyles.white25),
+            const Text('Ашиглалтад орсон эсэх: Тийм',
+                style: TextStyles.white15),
+            const Text('Ашиглалтад орсон: 2020', style: TextStyles.white15),
+            const Text('Лизинг: Үгүй', style: TextStyles.white15),
+            const Text('Байршил: СБД 1-р хороо Ч апартмент',
+                style: TextStyles.white15),
+            Container(
+              height: 100,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 69, 69, 69),
+                borderRadius: BorderRadius.circular(20),
+                // border: Border.all(
+                //   color: Colors.white,
+                //   width: 2,
+                // ),
+              ),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                child: Center(
+                  child: Text(
+                    'Хотын төвд, УИД-н баруун талд Peace mall худалдааны төвийн баруун жигүүр буюу Пийс тауэрт 95 мкв оффис худалдана. Эрэлттэй байршил тохилог оффис, хямд үнэ. Бартерт төвийн байршилд орон сууц оролцуулах боломжтой',
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
-              const line(),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
-      bottomNavigationBar: InkWell(
-        onTap: () {},
-        child: Container(
-          height: 70,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-              color: AppColors.red,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15), topRight: Radius.circular(15))),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(
-                Icons.call,
-                color: Colors.white,
-                size: 30,
-              ),
-              Text(
-                '9999 9999',
-                style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500),
-              ),
-            ],
-          ),
-        ),
-      ),
-      backgroundColor: AppColors.grey,
     );
   }
 }
@@ -235,6 +278,7 @@ class First extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.07,
       // color: Colors.yellow,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Column(
@@ -246,7 +290,7 @@ class First extends StatelessWidget {
               ),
               Text(
                 '2',
-                style: TextStyle(color: Colors.white),
+                style: TextStyles.white15,
               )
             ],
           ),
@@ -259,7 +303,7 @@ class First extends StatelessWidget {
               ),
               Text(
                 '2',
-                style: TextStyle(color: Colors.white),
+                style: TextStyles.white15,
               )
             ],
           ),
@@ -272,7 +316,7 @@ class First extends StatelessWidget {
               ),
               Text(
                 '58m2',
-                style: TextStyle(color: Colors.white),
+                style: TextStyles.white15,
               )
             ],
           ),
@@ -285,7 +329,7 @@ class First extends StatelessWidget {
               ),
               Text(
                 '2/8',
-                style: TextStyle(color: Colors.white),
+                style: TextStyles.white15,
               )
             ],
           ),
@@ -298,7 +342,7 @@ class First extends StatelessWidget {
               ),
               Text(
                 '1',
-                style: TextStyle(color: Colors.white),
+                style: TextStyles.white15,
               )
             ],
           ),

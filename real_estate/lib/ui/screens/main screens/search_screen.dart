@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:real_estate/constants/color.dart';
+import 'package:real_estate/constants/test.dart';
 import 'package:real_estate/ui/screens/appartment.dart';
 import 'package:real_estate/ui/screens/maps.dart';
 import 'package:real_estate/ui/screens/widgets/advertise.dart';
 import 'package:real_estate/ui/screens/widgets/indicator.dart';
 
 import '../agent_screen.dart';
+
+final ScrollController _scrollController = ScrollController();
+bool _isVisible = true;
+double _opacity = 1.0;
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -31,11 +37,30 @@ class _SearchScreenState extends State<SearchScreen>
     const AgentScreen(),
   ];
   @override
+  void initState() {
+    _scrollController.addListener(() {
+      if (_scrollController.position.userScrollDirection ==
+          ScrollDirection.reverse) {
+        setState(() {
+          _isVisible = false;
+        });
+      } else if (_scrollController.position.userScrollDirection ==
+          ScrollDirection.forward) {
+        setState(() {
+          _isVisible = true;
+        });
+      }
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext contex) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40),
+
         // height: 50,
         // width: 400,
         child: Column(
@@ -109,6 +134,17 @@ class Tabuud extends StatefulWidget {
 }
 
 class _TabuudState extends State<Tabuud> with TickerProviderStateMixin {
+  @override
+  void initState() {
+    _scrollController.addListener(() {
+      setState(() {
+        // Change the visibility based on the position of the scroll
+        _isVisible = _scrollController.offset <= 100;
+      });
+    });
+    super.initState();
+  }
+
   var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -175,37 +211,49 @@ class _TabuudState extends State<Tabuud> with TickerProviderStateMixin {
         const SizedBox(
           height: 5,
         ),
-        SizedBox(
-          height: 110,
-          width: MediaQuery.of(context).size.width,
-          child: PageView.builder(
-            onPageChanged: (index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
-            controller: PageController(viewportFraction: 0.9),
-            itemCount: advertiseList.length,
-            itemBuilder: (context, index) {
-              return AdvertiseItem(
-                advertise: advertiseList[index],
-              );
-            },
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ...List.generate(
-              advertiseList.length,
-              (index) => Indicator(
-                isActive: _selectedIndex == index ? true : false,
-              ),
+        Visibility(
+          visible: _isVisible,
+          child: AnimatedOpacity(
+            opacity: _opacity,
+            duration: const Duration(milliseconds: 500),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 110,
+                  width: MediaQuery.of(context).size.width,
+                  child: PageView.builder(
+                    onPageChanged: (index) {
+                      setState(() {
+                        _selectedIndex = index;
+                      });
+                    },
+                    controller: PageController(viewportFraction: 0.9),
+                    itemCount: advertiseList.length,
+                    itemBuilder: (context, index) {
+                      return AdvertiseItem(
+                        advertise: advertiseList[index],
+                      );
+                    },
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ...List.generate(
+                      advertiseList.length,
+                      (index) => Indicator(
+                        isActive: _selectedIndex == index ? true : false,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ],
+          ),
         ),
         Expanded(
           child: ListView.builder(
+            controller: _scrollController,
             itemCount: 10,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
@@ -213,8 +261,17 @@ class _TabuudState extends State<Tabuud> with TickerProviderStateMixin {
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => const Appartment()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Appartment(),
+                      ),
+                    );
+                    // Navigator.pushNamedAndRemoveUntil(
+                    //   context,
+                    //   '/new-route',
+                    //   (route) => route.isFirst,
+                    // );
                   },
                   child: Container(
                     height: 250,

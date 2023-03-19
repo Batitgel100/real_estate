@@ -18,7 +18,7 @@ class _LikeScreenState extends State<LikeScreen> {
           leading: InkWell(
             onTap: () {
               setState(() {
-                index_color = 0;
+                indexcolor = 0;
               });
             },
             child: const Icon(
