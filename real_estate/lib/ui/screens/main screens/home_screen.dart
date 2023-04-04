@@ -17,14 +17,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  //Гол дэлгэцүүд
   List pages = [
-    const SearchScreen(),
+    const MainScreen(),
     const LikeScreen(),
     const SearchScreen(),
     const MyAdvertisement(),
     const AccountScreen()
   ];
-
+//дэлгэц солигдох үйлдэл
   void changePage(int index) {
     setState(() {
       indexcolor = index;

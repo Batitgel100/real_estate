@@ -382,7 +382,7 @@ class _AgentState extends State<Agent> {
               ),
             ),
           ),
-          const line(),
+          const Line(),
         ],
       ),
       bottomNavigationBar: InkWell(

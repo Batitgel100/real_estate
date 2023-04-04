@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate/constants/color.dart';
-import 'package:real_estate/ui/screens/main%20screens/search_screen.dart';
 import 'package:real_estate/ui/screens/widgets/advertise.dart';
+import 'package:real_estate/ui/screens/widgets/advertise_item.dart';
 import 'package:real_estate/ui/screens/widgets/indicator.dart';
 
 class AgentScreen extends StatefulWidget {
@@ -113,8 +113,7 @@ class _AgentScreenState extends State<AgentScreen>
             ),
           ],
         ),
-        SizedBox(
-          height: 453,
+        Expanded(
           child: ListView.builder(
             itemCount: 10,
             itemBuilder: (BuildContext context, int index) {
@@ -149,16 +148,147 @@ class Agent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
+      height: 100,
       width: 400,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Colors.black,
-        image: const DecorationImage(
-            image: AssetImage(
-              '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/ageent.jpg',
-            ),
-            fit: BoxFit.cover),
+        color: const Color.fromARGB(255, 89, 88, 88),
+        // image: const DecorationImage(
+        //     image: AssetImage(
+        //       '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/ageent.jpg',
+        //     ),
+        //     fit: BoxFit.cover),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+              flex: 3,
+              child: Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      bottomLeft: Radius.circular(12)),
+                  // image: DecorationImage(
+                  //     image: AssetImage(
+                  //       '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/ageent.jpg',
+                  //     ),
+                  //     fit: BoxFit.cover),
+                ),
+                height: 100,
+                // child: Image.asset(
+                //   '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/ageent.jpg',
+                //   fit: BoxFit.fitHeight,
+                // ),
+              )),
+          Expanded(
+              flex: 7,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: 8.0,
+                ),
+                child: Row(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Midel Rigonan',
+                          style: TextStyles.white22,
+                        ),
+                        Row(
+                          children: const [
+                            Icon(
+                              Icons.home_rounded,
+                              color: Colors.white,
+                              size: 15,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Борлуулсан :',
+                              style: TextStyles.white15,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              '53',
+                              style: TextStyles.white15bold,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: const [
+                            Icon(
+                              Icons.money_sharp,
+                              color: Colors.white,
+                              size: 15,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Борлуулж байгаа :',
+                              style: TextStyles.white15,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              '153',
+                              style: TextStyles.white15bold,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: const [
+                            Icon(
+                              Icons.phone,
+                              color: Colors.white,
+                              size: 15,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Утас :',
+                              style: TextStyles.white15,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              '9999-9999',
+                              style: TextStyles.white15bold,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 100,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: const [
+                          Icon(
+                            Icons.star,
+                            size: 20,
+                            color: Colors.yellow,
+                          ),
+                          Text(
+                            '5.4',
+                            style: TextStyles.white15,
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )),
+        ],
       ),
     );
   }
@@ -175,6 +305,7 @@ class _AgentPageState extends State<AgentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.grey,
       appBar: AppBar(
         backgroundColor: AppColors.green,
         title: const Text('Midel Rigonan'),
@@ -182,7 +313,7 @@ class _AgentPageState extends State<AgentPage> {
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        child: Column(
+        child: ListView(
           children: [
             SizedBox(
               height: 320,
@@ -194,11 +325,11 @@ class _AgentPageState extends State<AgentPage> {
                     decoration: const BoxDecoration(
                       // borderRadius: BorderRadius.circular(12),
                       color: Colors.black,
-                      image: DecorationImage(
-                          image: AssetImage(
-                            '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/ageent.jpg',
-                          ),
-                          fit: BoxFit.cover),
+                      // image: DecorationImage(
+                      //     image: AssetImage(
+                      //       '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/ageent.jpg',
+                      //     ),
+                      //     fit: BoxFit.cover),
                     ),
                   ),
                   Column(
@@ -266,159 +397,160 @@ class _AgentPageState extends State<AgentPage> {
               ),
             ),
             Expanded(
-                child: Container(
-              width: MediaQuery.of(context).size.width,
-              color: AppColors.grey,
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Text(
-                    'Midel Rigonan',
-                    style: TextStyles.white25bold,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text(
-                      'Meredith Hart is a junior staff writer for the Sales Blog. She enjoys traveling and photography -- and can often be found roaming around Boston with a camera (or a coffee) in hand. Connect with her on Twitter!',
-                      style: TextStyles.white12,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                color: AppColors.grey,
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 15,
                     ),
-                  ),
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.insights,
-                        color: Colors.white,
-                        size: 35,
+                    const Text(
+                      'Midel Rigonan',
+                      style: TextStyles.white25bold,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(
+                        'Meredith Hart is a junior staff writer for the Sales Blog. She enjoys traveling and photography -- and can often be found roaming around Boston with a camera (or a coffee) in hand. Connect with her on Twitter!',
+                        style: TextStyles.white12,
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Туршлага:',
-                        style: TextStyles.white15,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        '15 жил',
-                        style: TextStyles.white15bold,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.home_rounded,
-                        color: Colors.white,
-                        size: 35,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Борлуулсан :',
-                        style: TextStyles.white15,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        '53',
-                        style: TextStyles.white15bold,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.money_sharp,
-                        color: Colors.white,
-                        size: 35,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Борлуулж байгаа :',
-                        style: TextStyles.white15,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        '153',
-                        style: TextStyles.white15bold,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.phone,
-                        color: Colors.white,
-                        size: 35,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Утас :',
-                        style: TextStyles.white15,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        '9999-9999',
-                        style: TextStyles.white15bold,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.star,
-                        color: Colors.white,
-                        size: 35,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Үнэлгээ :',
-                        style: TextStyles.white15,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        '4.5',
-                        style: TextStyles.white15bold,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: 110,
-                    width: 400,
-                    decoration: BoxDecoration(
-                        image: const DecorationImage(
-                            image: AssetImage(
-                                '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/reklam.jpg'),
-                            fit: BoxFit.cover),
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(12)),
-                  ),
-                ],
+                    ),
+                    Row(
+                      children: const [
+                        Icon(
+                          Icons.insights,
+                          color: Colors.white,
+                          size: 35,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Туршлага:',
+                          style: TextStyles.white15,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          '15 жил',
+                          style: TextStyles.white15bold,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: const [
+                        Icon(
+                          Icons.home_rounded,
+                          color: Colors.white,
+                          size: 35,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Борлуулсан :',
+                          style: TextStyles.white15,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          '53',
+                          style: TextStyles.white15bold,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: const [
+                        Icon(
+                          Icons.money_sharp,
+                          color: Colors.white,
+                          size: 35,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Борлуулж байгаа :',
+                          style: TextStyles.white15,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          '153',
+                          style: TextStyles.white15bold,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: const [
+                        Icon(
+                          Icons.phone,
+                          color: Colors.white,
+                          size: 35,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Утас :',
+                          style: TextStyles.white15,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          '9999-9999',
+                          style: TextStyles.white15bold,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: const [
+                        Icon(
+                          Icons.star,
+                          color: Colors.white,
+                          size: 35,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Үнэлгээ :',
+                          style: TextStyles.white15,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          '4.5',
+                          style: TextStyles.white15bold,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 110,
+                      width: 400,
+                      decoration: BoxDecoration(
+                          // image: const DecorationImage(
+                          //     image: AssetImage(
+                          //         '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/reklam.jpg'),
+                          //     fit: BoxFit.cover),
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                  ],
+                ),
               ),
-            ))
+            ),
           ],
         ),
       ),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:real_estate/constants/test.dart';
-import 'package:real_estate/ui/screens/appartment.dart';
-import 'package:real_estate/ui/screens/main%20screens/home_screen.dart';
+import 'package:real_estate/ui/screens/log%20sign/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -27,12 +26,12 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      // home: const LoginScreen(),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const HomeScreen(),
-        '/new-route': (context) => const Appartment(),
-      },
+      home: const LoginScreen(),
+      // initialRoute: '/',
+      // routes: {
+      //   '/': (context) => const HomeScreen(),
+      //   '/new-route': (context) => const Appartment(),
+      // },
     );
   }
 }

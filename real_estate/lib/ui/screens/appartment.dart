@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:real_estate/constants/color.dart';
 import 'package:real_estate/ui/screens/agent_screen.dart';
+import 'package:real_estate/ui/screens/main%20screens/search_screen.dart';
 
 class Appartment extends StatefulWidget {
   const Appartment({super.key});
@@ -10,6 +12,11 @@ class Appartment extends StatefulWidget {
 }
 
 class _AppartmentState extends State<Appartment> {
+  callNumber() async {
+    const number = '+97699035697'; //set the number here
+    bool? res = await FlutterPhoneDirectCaller.callNumber(number);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,11 +98,22 @@ class _AppartmentState extends State<Appartment> {
               ),
               actions: [
                 IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.favorite,
-                    size: 30,
-                  ),
+                  onPressed: () {
+                    setState(() {
+                      favorite = !favorite;
+                    });
+                  },
+                  icon: favorite
+                      ? const Icon(
+                          Icons.favorite,
+                          size: 30,
+                          color: Colors.red,
+                        )
+                      : const Icon(
+                          Icons.favorite_border,
+                          size: 30,
+                          color: Colors.white,
+                        ),
                 ),
               ],
               backgroundColor: const Color.fromARGB(0, 255, 255, 255),
@@ -103,63 +121,96 @@ class _AppartmentState extends State<Appartment> {
             ),
           ];
         },
-        body: Expanded(
-          child: SizedBox(
-            // width: MediaQuery.of(context).size.width * 0.95,
-            // color: Colors.yellow,
-            child: ListView(
-              shrinkWrap: true,
-              children: [
-                const First(),
-                const line(),
-                const Luxury(),
-                const line(),
-                const Location(),
-                const SizedBox(
-                  height: 20,
-                ),
-                const line(),
-                Center(
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.95,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: 5,
-                            bottom: 10,
-                          ),
-                          child: Text(
-                            'Төстэй зарууд',
-                            style: TextStyles.white22,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 8.0),
-                          child: Agent(),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 8.0),
-                          child: Agent(),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: 8.0),
-                          child: Agent(),
-                        ),
-                      ],
+        body: Flex(
+          direction: Axis.vertical,
+          children: [
+            Expanded(
+              child: SizedBox(
+                // width: MediaQuery.of(context).size.width * 0.95,
+                // color: Colors.yellow,
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    const First(),
+                    const Line(),
+                    const Luxury(),
+                    const Line(),
+                    const Location(),
+                    const SizedBox(
+                      height: 20,
                     ),
-                  ),
+                    const Line(),
+                    Center(
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.95,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: 5,
+                                bottom: 10,
+                              ),
+                              child: Text(
+                                'Төстэй зарууд',
+                                style: TextStyles.white22,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 8.0),
+                              child: Agent(),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 8.0),
+                              child: Agent(),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 8.0),
+                              child: Agent(),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          callNumber();
+        },
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.055,
+          decoration: const BoxDecoration(
+            color: Color.fromARGB(255, 249, 117, 108),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15),
+              topRight: Radius.circular(15),
+            ),
+          ),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(
+                  Icons.phone,
+                  color: Colors.white,
+                  size: 30,
+                ),
+                Text(
+                  '99999999',
+                  style: TextStyles.white25bold,
                 ),
               ],
             ),
           ),
         ),
       ),
-
       backgroundColor: AppColors.grey,
-      // bottomNavigationBar:
-      // MyBottomNavBar(currentIndex: 0, onTap: widget.toSomething),
     );
   }
 }
@@ -198,10 +249,10 @@ class Location extends StatelessWidget {
                 //   fit: BoxFit.contain,
                 // ),
               ),
-              child: Image.asset(
-                '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/imageddd.png',
-                fit: BoxFit.contain,
-              ),
+              // child: Image.asset(
+              //   '/Users/unurjargal/Documents/GitHub/real_estate/real_estate/assets/images/imageddd.png',
+              //   fit: BoxFit.contain,
+              // ),
             ),
             const SizedBox(
               height: 10,
@@ -223,7 +274,7 @@ class Luxury extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       // color: Colors.yellow,
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: MediaQuery.of(context).size.height * 0.35,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -238,7 +289,7 @@ class Luxury extends StatelessWidget {
             const Text('Байршил: СБД 1-р хороо Ч апартмент',
                 style: TextStyles.white15),
             Container(
-              height: 100,
+              height: MediaQuery.of(context).size.height * 0.1,
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 69, 69, 69),
                 borderRadius: BorderRadius.circular(20),
@@ -275,10 +326,10 @@ class First extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.07,
+      height: MediaQuery.of(context).size.height * 0.088,
       // color: Colors.yellow,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Column(
@@ -352,8 +403,8 @@ class First extends StatelessWidget {
   }
 }
 
-class line extends StatelessWidget {
-  const line({super.key});
+class Line extends StatelessWidget {
+  const Line({super.key});
 
   @override
   Widget build(BuildContext context) {

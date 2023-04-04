@@ -1,23 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate/constants/color.dart';
-import 'package:real_estate/ui/screens/log%20sign/signin_screen.dart';
+import 'package:real_estate/ui/screens/log%20sign/vertification.dart';
 import 'package:real_estate/ui/screens/main%20screens/home_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        leadingWidth: 100,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Padding(
+            padding: EdgeInsets.only(left: 8.0),
+            child: Text(
+              'буцах',
+              style: TextStyles.white22,
+            ),
+          ),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
       body: Stack(
         children: [
           SizedBox(
-            height: 600,
+            height: 450,
             width: 450,
             child: Image.asset(
               'assets/images/real_estate.jpg',
@@ -42,15 +60,15 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: 400,
+                height: 500,
                 color: Colors.white,
                 child: Column(
                   children: [
                     const Text(
-                      'Нэвтрэх',
+                      'Бүртгүүлэх',
                       style: TextStyle(
                           fontSize: 28,
-                          color: AppColors.green,
+                          color: Color.fromARGB(255, 73, 152, 188),
                           fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(
@@ -58,6 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Center(
                       child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.06,
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: const TextField(
                           style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
@@ -95,6 +114,45 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Center(
                       child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.06,
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        child: const TextField(
+                          style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                          // keyboardType: widget.inputType,
+                          // controller: widget.controller,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 20.0, horizontal: 20),
+                            fillColor: Colors.white,
+                            hoverColor: Colors.white,
+                            hintText: 'Утасны дугаар',
+                            // labelText: 'Хэрэглэгчийн нэр',
+                            // labelStyle: TextStyle(color: Colors.black),
+                            focusColor: Colors.white,
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 106, 106, 106),
+                                  width: 1,
+                                )),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 106, 106, 106),
+                                  width: 1,
+                                )),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Center(
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.06,
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: const TextField(
                           obscureText: true,
@@ -131,45 +189,63 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(
                       height: 5,
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          TextButton(
-                            onPressed: () {},
-                            child: const Text(
-                              'Нууц үг мартсан бол энд дарна уу',
-                              style: TextStyle(
-                                color: Colors.black,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
+                    Center(
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.06,
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        child: const TextField(
+                          obscureText: true,
+                          style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                          // keyboardType: widget.inputType,
+                          // controller: widget.controller,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 20.0, horizontal: 20),
+                            fillColor: Colors.white,
+                            hoverColor: Colors.white,
+                            hintText: 'Нууц үг давтаж оруулна уу',
+                            // labelText: 'Хэрэглэгчийн нэр',
+                            // labelStyle: TextStyle(color: Colors.black),
+                            focusColor: Colors.white,
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 106, 106, 106),
+                                  width: 1,
+                                )),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 106, 106, 106),
+                                  width: 1,
+                                )),
                           ),
-                        ],
+                        ),
                       ),
                     ),
                     const SizedBox(
-                      height: 5,
+                      height: 15,
                     ),
                     InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => const HomeScreen(),
+                            builder: (_) => const VertificationScreen(),
                           ),
                         );
                       },
                       child: Container(
-                        width: 300,
+                        width: MediaQuery.of(context).size.width * 0.8,
                         height: 50,
                         decoration: BoxDecoration(
-                            color: Colors.green,
+                            color: const Color.fromARGB(255, 73, 152, 188),
                             borderRadius: BorderRadius.circular(8)),
                         child: const Center(
                           child: Text(
-                            'Нэвртэх',
+                            'Бүртгүүлэх',
                             style: TextStyles.white22,
                           ),
                         ),
@@ -177,29 +253,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(
                       height: 5,
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => const SignInScreen()));
-                            },
-                            child: const Text(
-                              'Шинээр бүртгүүлэх',
-                              style: TextStyle(
-                                color: AppColors.green,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
                     ),
                   ],
                 ),
