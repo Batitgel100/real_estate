@@ -1,13 +1,13 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:real_estate/ui/screens/log%20sign/login_screen.dart';
+import 'package:real_estate/ui/screens/maps.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

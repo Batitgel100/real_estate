@@ -52,7 +52,7 @@ class _SearchScreenState extends State<SearchScreen>
   ];
   List tabs = [
     const Tabuud(),
-    const Mapss(),
+    CustomInfoWindowExample(),
     const AgentScreen(),
   ];
   @override

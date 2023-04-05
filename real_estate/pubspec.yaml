@@ -47,6 +47,7 @@ dependencies:
   flutter_phone_direct_caller: ^2.1.1
   flutter_bloc: ^8.1.2
   flutter_form_builder: ^7.0.0-alpha.3
+  clippy_flutter: ^1.1.1
 
 dev_dependencies:
   flutter_test:
