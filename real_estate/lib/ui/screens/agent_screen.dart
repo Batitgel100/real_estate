@@ -15,127 +15,166 @@ class AgentScreen extends StatefulWidget {
 
 class _AgentScreenState extends State<AgentScreen>
     with TickerProviderStateMixin {
+  ScrollController scrollController = ScrollController();
+  final double _opacity = 1.0;
+  bool _visible = true;
   var _selectedIndex = 0;
+  @override
+  void initState() {
+    scrollController.addListener(() {
+      setState(() {
+        // Change the visibility based on the position of the scroll
+        _visible = scrollController.offset <= 50;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     // TabController tabController = TabController(length: 3, vsync: this);
-    return Column(
-      children: [
-        const SizedBox(
-          height: 5,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              height: 50,
-              width: MediaQuery.of(context).size.width * 0.95,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  width: 1,
-                  color: const Color.fromARGB(159, 0, 0, 0),
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: Flex(
+        direction: Axis.vertical,
+        children: [
+          Expanded(
+            flex: _visible ? 4 : 0,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 5,
                 ),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.only(left: 15),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Агент нэрээр хайх',
-                  ),
-                ),
-              ),
-            ),
-            // InkWell(
-            //   onTap: () {},
-            //   child: const Icon(
-            //     Icons.settings,
-            //     size: 45,
-            //     color: Color.fromARGB(255, 82, 82, 82),
-            //   ),
-            // ),
-          ],
-        ),
-        const SizedBox(
-          height: 7,
-        ),
-        Container(
-          height: 1,
-          color: Colors.black,
-        ),
-        Container(
-          height: 40,
-          width: MediaQuery.of(context).size.width,
-          color: const Color.fromARGB(146, 61, 155, 121),
-          child: Center(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.95,
-              child: Row(
-                children: const [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text('255 агент олдлоо'),
-                ],
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        SizedBox(
-          height: 110,
-          width: MediaQuery.of(context).size.width,
-          child: PageView.builder(
-            onPageChanged: (index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
-            controller: PageController(viewportFraction: 0.9),
-            itemCount: advertiseList.length,
-            itemBuilder: (context, index) {
-              return AdvertiseItem(
-                advertise: advertiseList[index],
-              );
-            },
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ...List.generate(
-              advertiseList.length,
-              (index) => Indicator(
-                isActive: _selectedIndex == index ? true : false,
-              ),
-            ),
-          ],
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: 10,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const AgentPage(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width * 0.95,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(
+                          width: 1,
+                          color: const Color.fromARGB(159, 0, 0, 0),
+                        ),
                       ),
-                    );
-                  },
-                  child: const Agent(),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 15),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Агент нэрээр хайх',
+                          ),
+                        ),
+                      ),
+                    ),
+                    // InkWell(
+                    //   onTap: () {},
+                    //   child: const Icon(
+                    //     Icons.settings,
+                    //     size: 45,
+                    //     color: Color.fromARGB(255, 82, 82, 82),
+                    //   ),
+                    // ),
+                  ],
                 ),
-              );
-            },
+                const SizedBox(
+                  height: 7,
+                ),
+                Container(
+                  height: 1,
+                  color: Colors.black,
+                ),
+                Container(
+                  height: 40,
+                  width: MediaQuery.of(context).size.width,
+                  color: const Color.fromARGB(146, 61, 155, 121),
+                  child: Center(
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.95,
+                      child: Row(
+                        children: const [
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('255 агент олдлоо'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Visibility(
+                  visible: _visible,
+                  child: AnimatedOpacity(
+                    opacity: _opacity,
+                    duration: const Duration(milliseconds: 500),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.14,
+                          width: MediaQuery.of(context).size.width,
+                          child: PageView.builder(
+                            onPageChanged: (index) {
+                              setState(() {
+                                _selectedIndex = index;
+                              });
+                            },
+                            controller: PageController(viewportFraction: 0.9),
+                            itemCount: advertiseList.length,
+                            itemBuilder: (context, index) {
+                              return AdvertiseItem(
+                                advertise: advertiseList[index],
+                              );
+                            },
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ...List.generate(
+                              advertiseList.length,
+                              (index) => Indicator(
+                                isActive:
+                                    _selectedIndex == index ? true : false,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+          Expanded(
+            flex: _visible ? 7 : 10,
+            child: ListView.builder(
+              controller: scrollController,
+              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const AgentPage(),
+                        ),
+                      );
+                    },
+                    child: const Agent(),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
